@@ -16,7 +16,7 @@ int main(int argc, char** argv)
     // Texture
     SDL_Surface* tmpSurface;
 
-    SDL_Texture* texture[7];
+    SDL_Texture* texture[7]{};
     for (int i = 0; i < 7; i++)
     {
         tmpSurface = IMG_Load(img[i]);
