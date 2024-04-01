@@ -51,21 +51,24 @@ void putBlock(int mousePosX, int mousePosY, int i, int j, int Radius, SDL_Textur
     int x = mousePosX / BLOCK_W + i;
     int y = mousePosY / BLOCK_H + j;
 
-    if (curBlockIdx < BLOCK_MAX && map[x][y] == 0 && !(x < 0) && !(y < 0) && (x < MAP_W) && (y < MAP_H))
+    if (!(x < 0) && !(y < 0) && (x < MAP_W) && (y < MAP_H))
     {
-        map[x][y] = 1;
-        block[curBlockIdx].x = x;
-        block[curBlockIdx].y = y;
-        block[curBlockIdx].blockIdx = curBlockIdx;
-        block[curBlockIdx].onScreen = true;
-        block[curBlockIdx].updatable = true;
-        block[curBlockIdx].rect.x = block[curBlockIdx].x * BLOCK_W;
-        block[curBlockIdx].rect.y = block[curBlockIdx].y * BLOCK_H;
-        block[curBlockIdx].rect.w = BLOCK_W;
-        block[curBlockIdx].rect.h = BLOCK_H;
-        block[curBlockIdx].texture = blockTexture;
+        if (curBlockIdx < BLOCK_MAX && map[x][y] == 0)
+        {
+            map[x][y] = 1;
+            block[curBlockIdx].x = x;
+            block[curBlockIdx].y = y;
+            block[curBlockIdx].blockIdx = curBlockIdx;
+            block[curBlockIdx].onScreen = true;
+            block[curBlockIdx].updatable = true;
+            block[curBlockIdx].rect.x = block[curBlockIdx].x * BLOCK_W;
+            block[curBlockIdx].rect.y = block[curBlockIdx].y * BLOCK_H;
+            block[curBlockIdx].rect.w = BLOCK_W;
+            block[curBlockIdx].rect.h = BLOCK_H;
+            block[curBlockIdx].texture = blockTexture;
 
-        curBlockIdx++;
+            curBlockIdx++;
+        }
     }
 }
 
